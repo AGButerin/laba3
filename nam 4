@@ -1,0 +1,27 @@
+import math
+
+def series_term(k, x):
+    denominator = math.sin(k * x) + 4 + k**2
+    return (-1)**k / denominator
+
+def compute_series(x, precision):
+    sum = 0.0
+    k = 1
+    while True:
+        term = series_term(k, x)
+        if abs(term) < precision:
+            break
+        sum += term
+        k += 1
+    return sum
+
+def main():
+    x = 1.0  # Пример значении x, можно изменить на другие значения
+    precision = 1e-6  # Заданная точность
+
+    result = compute_series(x, precision)
+
+    print(f"Сумма ряда при x={x} с точностью {precision}: {result}")
+
+if __name__ == "__main__":
+    main()
