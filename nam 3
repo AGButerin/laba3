@@ -1,0 +1,27 @@
+import math
+
+def series_term(k):
+    term1 = 4 / (2**(k-1))
+    term2 = 2 * ( (-1)**(k-1) ) / ( 2 * 3**(k-1) )
+    return term1 + term2
+
+def compute_series(precision):
+    sum = 0.0
+    k = 1
+    while True:
+        term = series_term(k)
+        if abs(term) < precision:
+            break
+        sum += term
+        k += 1
+    return sum
+
+def main():
+    precision = 1e-6  # Desired precision
+
+    result = compute_series(precision)
+
+    print(f"Sum of the series with precision {precision}: {result}")
+
+if __name__ == "__main__":
+    main()
